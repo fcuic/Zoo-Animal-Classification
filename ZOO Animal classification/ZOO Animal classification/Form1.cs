@@ -20,6 +20,7 @@ namespace ZOO_Animal_classification
     {
         public Form1()
         {
+            this.BackgroundImage = Properties.Resources.image;
             InitializeComponent();
         }
         public class Animal
@@ -33,6 +34,7 @@ namespace ZOO_Animal_classification
             public string resAmphibian;
             public string resBug;
             public string resInvertebrate;
+            Random rnd = new Random();
             public Animal()//defaultni konstruktor
                 {
                 hair= 1;
@@ -135,9 +137,9 @@ namespace ZOO_Animal_classification
             {
                 return this.legs;
             }
-            public void SetHair(int Hair)
+            public void SetHair()
             {
-                this.hair=Hair;
+                this.hair=rnd.Next(0,2);
             }
             public void SetFeathers(int Feathers)
             {
@@ -254,14 +256,21 @@ namespace ZOO_Animal_classification
             string ResponseContentString = response.Content.ToString();
             string json = CreateJson(ResponseContentString);
             Animal animal = JsonConvert.DeserializeObject<Animal>(json);
+            richTextBox2.Text = ResponseContentString;
             
             
             
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Animal GeneratedAnimal = new Animal();
+            GeneratedAnimal.Set
         }
     }
 }
