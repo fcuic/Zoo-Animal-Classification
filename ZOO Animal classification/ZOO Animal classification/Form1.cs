@@ -26,7 +26,14 @@ namespace ZOO_Animal_classification
         {
             private int hair, feathers, eggs, milk, airborne, aquatic, predator, toothed, backbone, breathes, venomous, fins, tail, domestic, catsize;
             private int legs;
-            public Animal()
+            public string resMammal;
+            public string resBird;
+            public string resReptile;
+            public string resFish;
+            public string resAmphibian;
+            public string resBug;
+            public string resInvertebrate;
+            public Animal()//defaultni konstruktor
                 {
                 hair= 1;
                 feathers = 0;
@@ -45,7 +52,7 @@ namespace ZOO_Animal_classification
                 catsize = 1;
                 legs = 4;
                 }
-            public Animal(int Hair,int Feathers, int Eggs,int Milk,int Airborne,int Aquatic,int Predator,int Toothed,int Backbone,int Breathes,int Venomous,int Fins,int Tail,int Domestic,int Catsize, int Legs )
+            public Animal(int Hair,int Feathers, int Eggs,int Milk,int Airborne,int Aquatic,int Predator,int Toothed,int Backbone,int Breathes,int Venomous,int Fins,int Tail,int Domestic,int Catsize, int Legs )//paramatarski konstruktor
             {
                 hair = Hair;
                 feathers = Feathers;
@@ -64,71 +71,134 @@ namespace ZOO_Animal_classification
                 catsize =Catsize;
                 legs = Legs;
             }
-            public int gethair()
+            public int GetHair()
             {
                 return this.hair;
             }
-            public int getfeathers()
+            public int GetFeathers()
             {
                 return this.feathers;
             }
-            public int geteggs()
+            public int GetEggs()
             {
                 return this.eggs;
             }
-            public int getmilk()
+            public int GetMilk()
             {
                 return this.milk;
             }
-            public int getairborne()
+            public int GetAirborne()
             {
                 return this.airborne;
             }
-            public int getaquatic()
+            public int GetAquatic()
             {
                 return this.feathers;
             }
-            public int getpredator()
+            public int GetPredator()
             {
                 return this.predator;
             }
-            public int gettoothed()
+            public int GetToothed()
             {
                 return this.toothed;
             }
-            public int getbackbone()
+            public int GetBackbone()
             {
                 return this.backbone;
             }
-            public int getbreathes()
+            public int GetBreathes()
             {
                 return this.breathes;
             }
-            public int getvenomous()
+            public int GetVenomous()
             {
                 return this.venomous;
             }
-            public int getfins()
+            public int GetFins()
             {
                 return this.fins;
             }
-            public int gettail()
+            public int GetTail()
             {
                 return this.tail;
             }
-            public int getdomestic()
+            public int GetDomestic()
             {
                 return this.domestic;
             }
-            public int getcatsize()
+            public int GetCatsize()
             {
                 return this.catsize;
             }
-            public int getlegs()
+            public int GetLegs()
             {
                 return this.legs;
             }
-
+            public void SetHair(int Hair)
+            {
+                this.hair=Hair;
+            }
+            public void SetFeathers(int Feathers)
+            {
+                this.feathers=Feathers;
+            }
+            public void SetEggs(int Eggs)
+            {
+                this.eggs=Eggs;
+            }
+            public void SetMilk(int Milk)
+            {
+                this.milk=Milk;
+            }
+            public void SetAirborne(int Airborne)
+            {
+                this.airborne=Airborne;
+            }
+            public void SetAquatic(int Aquatic)
+            {
+               this.aquatic= Aquatic;
+            }
+            public void SetPredator(int Predator)
+            {
+                this.predator=Predator;
+            }
+            public void SetToothed(int Toothed)
+            {
+                this.toothed=Toothed;
+            }
+            public void SetBackbone(int Backbone)
+            {
+                this.backbone=Backbone;
+            }
+            public void SetBreathes(int Breathes)
+            {
+                this.breathes=Breathes;
+            }
+            public void SetVenomous(int Venomous)
+            {
+                this.venomous=Venomous;
+            }
+            public void SetFins(int Fins)
+            {
+               this.fins=Fins;
+            }
+            public void SetTail(int Tail)
+            {
+               this.tail=Tail;
+            }
+            public void SetDomestic(int Domestic)
+            {
+               this.domestic=Domestic;
+            }
+            public void SetCatsize(int Catsize)
+            {
+               this.catsize=Catsize;
+            }
+            public void SetLegs(int Legs)
+            {
+               this.legs=Legs;
+            }      
         };
         public static string Reverse(string s)
         {
@@ -143,20 +213,20 @@ namespace ZOO_Animal_classification
             tempjson = tempjson.Substring(3);
             string jsonString = Reverse(tempjson);
 
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Mammal\\\"", "cLemon");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Bird\\\"", "cLimes");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Reptile\\\"", "cMandarine");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Fish\\\"", "cPlum");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Amphibian\\\"", "cCocos");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Bug\\\"", "cPapaya");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Invertebrate\\\"", "cPeach");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Mammal\\\"", "resMammal");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Bird\\\"", "resBird");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Reptile\\\"", "resReptile");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Fish\\\"", "resFish");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Amphibian\\\"", "resAmphibian");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Bug\\\"", "resBug");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Invertebrate\\\"", "resInvertebrate");
             jsonString = jsonString.Replace("Scored Labels", "score");
             return jsonString;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Animal ziv = new Animal(0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 2);//kokos
+            Animal ziv = new Animal();//kokos
             var client = new RestClient("https://ussouthcentral.services.azureml.net/workspaces/c8f8d54293054df997070fac57ee9366/services/da2db6f9f6d947458210709e2da232bb/execute?api-version=2.0&format=swagger");
             var request = new RestRequest(Method.POST);
             request.AddHeader("Postman-Token", "e8414b95-b5c7-4d92-9fa6-16c0c942414d");
@@ -164,22 +234,22 @@ namespace ZOO_Animal_classification
             request.AddHeader("Authorization", "Bearer YHYI44U79uvZ1iWWKaTJXVmjBIx3tj5XwsTTCKdRStNQIjsVOZdxKNDwTueGALuddwmIbAQXGMHgE9xhZquCDQ==");
             request.AddHeader("Content-Type", "application/json");
             request.AddParameter("undefined", "{\r\n\"Inputs\": {\r\n\"input1\":\r\n[\r\n{\r\n'hair': \""
-                + ziv.gethair() + "\",   \r\n'feathers': \""
-                + ziv.getfeathers() + "\",\r\n'eggs': \""
-                + ziv.geteggs() + "\",\r\n'milk': \""
-                + ziv.getmilk() + "\",\r\n'airborne': \""
-                + ziv.getairborne() + "\",\r\n'aquatic': \""
-                + ziv.getaquatic() + "\",\r\n'predator': \""
-                + ziv.getpredator() + "\",\r\n'toothed': \""
-                + ziv.gettoothed() + "\",\r\n'backbone': \""
-                + ziv.getbackbone() + "\",\r\n'breathes': \""
-                + ziv.getbreathes() + "\",\r\n'venomous': \""
-                + ziv.getvenomous() + "\",\r\n'fins': \""
-                + ziv.getfins() + "\",\r\n'legs': \""
-                + ziv.getlegs() + "\",\r\n'tail': \""
-                + ziv.gettail() + "\",\r\n'domestic': \""
-                + ziv.getdomestic() + "\",\r\n'catsize': \""
-                + ziv.getcatsize() + "\",\r\n}\r\n],\r\n},\r\n\"GlobalParameters\":  {\r\n}\r\n}\r\n", ParameterType.RequestBody);
+                + ziv.GetHair() + "\",   \r\n'feathers': \""
+                + ziv.GetFeathers() + "\",\r\n'eggs': \""
+                + ziv.GetEggs() + "\",\r\n'milk': \""
+                + ziv.GetMilk() + "\",\r\n'airborne': \""
+                + ziv.GetAirborne() + "\",\r\n'aquatic': \""
+                + ziv.GetAquatic() + "\",\r\n'predator': \""
+                + ziv.GetPredator() + "\",\r\n'toothed': \""
+                + ziv.GetToothed() + "\",\r\n'backbone': \""
+                + ziv.GetBackbone() + "\",\r\n'breathes': \""
+                + ziv.GetBreathes() + "\",\r\n'venomous': \""
+                + ziv.GetVenomous() + "\",\r\n'fins': \""
+                + ziv.GetFins() + "\",\r\n'legs': \""
+                + ziv.GetLegs() + "\",\r\n'tail': \""
+                + ziv.GetTail() + "\",\r\n'domestic': \""
+                + ziv.GetDomestic() + "\",\r\n'catsize': \""
+                + ziv.GetCatsize() + "\",\r\n}\r\n],\r\n},\r\n\"GlobalParameters\":  {\r\n}\r\n}\r\n", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             string ResponseContentString = response.Content.ToString();
             string json = CreateJson(ResponseContentString);
