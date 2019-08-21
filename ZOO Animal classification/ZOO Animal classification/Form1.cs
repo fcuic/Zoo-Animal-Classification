@@ -141,65 +141,65 @@ namespace ZOO_Animal_classification
             {
                 this.hair=rnd.Next(0,2);
             }
-            public void SetFeathers(int Feathers)
+            public void SetFeathers()
             {
-                this.feathers=Feathers;
+                this.feathers=rnd.Next(0,2);
             }
-            public void SetEggs(int Eggs)
+            public void SetEggs()
             {
-                this.eggs=Eggs;
+                this.eggs=rnd.Next(0,2);
             }
-            public void SetMilk(int Milk)
+            public void SetMilk()
             {
-                this.milk=Milk;
+                this.milk= rnd.Next(0, 2);
             }
-            public void SetAirborne(int Airborne)
+            public void SetAirborne()
             {
-                this.airborne=Airborne;
+                this.airborne= rnd.Next(0, 2);
             }
-            public void SetAquatic(int Aquatic)
+            public void SetAquatic()
             {
-               this.aquatic= Aquatic;
+               this.aquatic= rnd.Next(0, 2);
             }
-            public void SetPredator(int Predator)
+            public void SetPredator()
             {
-                this.predator=Predator;
+                this.predator= rnd.Next(0, 2);
             }
-            public void SetToothed(int Toothed)
+            public void SetToothed()
             {
-                this.toothed=Toothed;
+                this.toothed= rnd.Next(0, 2);
             }
-            public void SetBackbone(int Backbone)
+            public void SetBackbone()//kičma
             {
-                this.backbone=Backbone;
+                this.backbone= rnd.Next(0, 2);
             }
-            public void SetBreathes(int Breathes)
+            public void SetBreathes()
             {
-                this.breathes=Breathes;
+                this.breathes= rnd.Next(0, 2);
             }
-            public void SetVenomous(int Venomous)
+            public void SetVenomous()
             {
-                this.venomous=Venomous;
+                this.venomous= rnd.Next(0, 2);
             }
-            public void SetFins(int Fins)
+            public void SetFins()
             {
-               this.fins=Fins;
+               this.fins= rnd.Next(0, 2);
             }
-            public void SetTail(int Tail)
+            public void SetTail()
             {
-               this.tail=Tail;
+               this.tail= rnd.Next(0, 2);
             }
-            public void SetDomestic(int Domestic)
+            public void SetDomestic()
             {
-               this.domestic=Domestic;
+               this.domestic= rnd.Next(0, 2);
             }
-            public void SetCatsize(int Catsize)
+            public void SetCatsize()
             {
-               this.catsize=Catsize;
+               this.catsize= rnd.Next(0, 2);
             }
-            public void SetLegs(int Legs)
+            public void SetLegs()
             {
-               this.legs=Legs;
+               this.legs= rnd.Next(0, 9);
             }      
         };
         public static string Reverse(string s)
@@ -257,10 +257,49 @@ namespace ZOO_Animal_classification
             string json = CreateJson(ResponseContentString);
             Animal animal = JsonConvert.DeserializeObject<Animal>(json);
             richTextBox2.Text = ResponseContentString;
-            
-            
-            
+            ReadValues(ziv);
         }
+
+        public Animal GenerateAnimal() {
+            Animal animal = new Animal();
+            animal.SetHair();
+            animal.SetFeathers();
+            animal.SetEggs();
+            animal.SetMilk();
+            animal.SetAirborne();
+            animal.SetAquatic();
+            animal.SetPredator();
+            animal.SetToothed();
+            animal.SetBackbone();
+            animal.SetBreathes();
+            animal.SetVenomous();
+            animal.SetFins();
+            animal.SetLegs();
+            animal.SetTail();
+            animal.SetDomestic();
+            animal.SetCatsize();
+            return animal;
+        }
+
+        public void ReadValues(Animal animal) {
+            textBox1.Text = (animal.GetHair()).ToString();
+            textBox2.Text = (animal.GetFeathers()).ToString();
+            textBox3.Text = (animal.GetEggs()).ToString();
+            textBox4.Text = (animal.GetMilk()).ToString();
+            textBox16.Text = (animal.GetAirborne()).ToString();
+            textBox5.Text = (animal.GetAquatic()).ToString();
+            textBox6.Text = (animal.GetPredator()).ToString();
+            textBox7.Text = (animal.GetToothed()).ToString();
+            textBox8.Text = (animal.GetBackbone()).ToString();
+            textBox9.Text = (animal.GetBreathes()).ToString();
+            textBox10.Text = (animal.GetVenomous()).ToString();
+            textBox11.Text = (animal.GetFins()).ToString();
+            textBox12.Text = (animal.GetLegs()).ToString();
+            textBox13.Text = (animal.GetTail()).ToString();
+            textBox14.Text = (animal.GetDomestic()).ToString();
+            textBox15.Text = (animal.GetCatsize()).ToString();
+        }
+        
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -269,8 +308,36 @@ namespace ZOO_Animal_classification
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Animal GeneratedAnimal = new Animal();
-            GeneratedAnimal.Set
+            Animal GeneratedAnimal = GenerateAnimal();
+            var client = new RestClient("https://ussouthcentral.services.azureml.net/workspaces/c8f8d54293054df997070fac57ee9366/services/da2db6f9f6d947458210709e2da232bb/execute?api-version=2.0&format=swagger");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Postman-Token", "e8414b95-b5c7-4d92-9fa6-16c0c942414d");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Authorization", "Bearer YHYI44U79uvZ1iWWKaTJXVmjBIx3tj5XwsTTCKdRStNQIjsVOZdxKNDwTueGALuddwmIbAQXGMHgE9xhZquCDQ==");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("undefined", "{\r\n\"Inputs\": {\r\n\"input1\":\r\n[\r\n{\r\n'hair': \""
+                + GeneratedAnimal.GetHair() + "\",   \r\n'feathers': \""
+                + GeneratedAnimal.GetFeathers() + "\",\r\n'eggs': \""
+                + GeneratedAnimal.GetEggs() + "\",\r\n'milk': \""
+                + GeneratedAnimal.GetMilk() + "\",\r\n'airborne': \""
+                + GeneratedAnimal.GetAirborne() + "\",\r\n'aquatic': \""
+                + GeneratedAnimal.GetAquatic() + "\",\r\n'predator': \""
+                + GeneratedAnimal.GetPredator() + "\",\r\n'toothed': \""
+                + GeneratedAnimal.GetToothed() + "\",\r\n'backbone': \""
+                + GeneratedAnimal.GetBackbone() + "\",\r\n'breathes': \""
+                + GeneratedAnimal.GetBreathes() + "\",\r\n'venomous': \""
+                + GeneratedAnimal.GetVenomous() + "\",\r\n'fins': \""
+                + GeneratedAnimal.GetFins() + "\",\r\n'legs': \""
+                + GeneratedAnimal.GetLegs() + "\",\r\n'tail': \""
+                + GeneratedAnimal.GetTail() + "\",\r\n'domestic': \""
+                + GeneratedAnimal.GetDomestic() + "\",\r\n'catsize': \""
+                + GeneratedAnimal.GetCatsize() + "\",\r\n}\r\n],\r\n},\r\n\"GlobalParameters\":  {\r\n}\r\n}\r\n", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            string ResponseContentString = response.Content.ToString();
+            string json = CreateJson(ResponseContentString);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(json);
+            richTextBox2.Text = ResponseContentString;
+            ReadValues(GeneratedAnimal);
         }
     }
 }

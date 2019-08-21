@@ -349,3 +349,4 @@ C:\Users\Bruno\Desktop\RUAP projekt\Zoo-Animal-Classification\ZOO Animal classif
 C:\Users\Bruno\Desktop\RUAP projekt\Zoo-Animal-Classification\ZOO Animal classification\ZOO Animal classification\obj\Debug\ZOO Animal classification.csproj.CopyComplete
 C:\Users\Bruno\Desktop\RUAP projekt\Zoo-Animal-Classification\ZOO Animal classification\ZOO Animal classification\obj\Debug\ZOO Animal classification.exe
 C:\Users\Bruno\Desktop\RUAP projekt\Zoo-Animal-Classification\ZOO Animal classification\ZOO Animal classification\obj\Debug\ZOO Animal classification.pdb
+C:\Users\filip_000\Desktop\RUAP Projekt\Zoo Animal Classification\ZOO Animal classification\ZOO Animal classification\obj\Debug\ZOO_Animal_classification.Form2.resources
