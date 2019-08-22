@@ -20,7 +20,7 @@ namespace ZOO_Animal_classification
     {
         public Form1()
         {
-            this.BackgroundImage = Properties.Resources.image;
+            this.BackgroundImage = Properties.Resources.pozadina;
             InitializeComponent();
         }
         public class Animal
@@ -34,6 +34,7 @@ namespace ZOO_Animal_classification
             public string resAmphibian;
             public string resBug;
             public string resInvertebrate;
+            public string score;
             Random rnd = new Random();
             public Animal()//defaultni konstruktor
                 {
@@ -215,13 +216,13 @@ namespace ZOO_Animal_classification
             tempjson = tempjson.Substring(3);
             string jsonString = Reverse(tempjson);
 
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Mammal\\\"", "resMammal");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Bird\\\"", "resBird");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Reptile\\\"", "resReptile");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Fish\\\"", "resFish");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Amphibian\\\"", "resAmphibian");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Bug\\\"", "resBug");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"Invertebrate\\\"", "resInvertebrate");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \"1\"", "resMammal");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \"2\"", "resBird");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \"3\"", "resReptile");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \"4\"", "resFish");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \"5\"", "resAmphibian");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \"6\"", "resBug");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \"7\"", "resInvertebrate");
             jsonString = jsonString.Replace("Scored Labels", "score");
             return jsonString;
         }
@@ -257,6 +258,13 @@ namespace ZOO_Animal_classification
             string json = CreateJson(ResponseContentString);
             Animal animal = JsonConvert.DeserializeObject<Animal>(json);
             richTextBox2.Text = ResponseContentString;
+            textBox17.Text = animal.resMammal.ToString();
+            textBox18.Text = animal.resBird.ToString();
+            textBox19.Text = animal.resReptile.ToString();
+            textBox20.Text = animal.resFish.ToString();
+            textBox21.Text = animal.resAmphibian.ToString();
+            textBox22.Text = animal.resBug.ToString();
+            textBox23.Text = animal.resInvertebrate.ToString();
             ReadValues(ziv);
         }
 
@@ -337,7 +345,20 @@ namespace ZOO_Animal_classification
             string json = CreateJson(ResponseContentString);
             Animal animal = JsonConvert.DeserializeObject<Animal>(json);
             richTextBox2.Text = ResponseContentString;
+            textBox17.Text = animal.resMammal.ToString();
+            textBox18.Text = animal.resBird.ToString();
+            textBox19.Text = animal.resReptile.ToString();
+            textBox20.Text = animal.resFish.ToString();
+            textBox21.Text = animal.resAmphibian.ToString();
+            textBox22.Text = animal.resBug.ToString();
+            textBox23.Text = animal.resInvertebrate.ToString();
             ReadValues(GeneratedAnimal);
+        }
+
+        private void button4_Click(object sender, EventArgs e)//see existing classes
+        {
+            Form2 f2 = new Form2();
+            f2.ShowDialog();
         }
     }
 }

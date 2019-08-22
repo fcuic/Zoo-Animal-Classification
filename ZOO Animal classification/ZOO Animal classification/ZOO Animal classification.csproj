@@ -115,23 +115,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\animalClass.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\zooanimals.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\zoo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\form1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\image.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\chooseclass.jpg" />
+    <None Include="Resources\pozadina.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
