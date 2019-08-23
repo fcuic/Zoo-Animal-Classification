@@ -27,32 +27,32 @@ namespace ZOO_Animal_classification
         {
             private int hair, feathers, eggs, milk, airborne, aquatic, predator, toothed, backbone, breathes, venomous, fins, tail, domestic, catsize;
             private int legs;
-            public string resMammal;
-            public string resBird;
-            public string resReptile;
-            public string resFish;
-            public string resAmphibian;
-            public string resBug;
-            public string resInvertebrate;
+            public string probabilityMammal;
+            public string probabilityBird;
+            public string probabilityReptile;
+            public string probabilityFish;
+            public string probabilityAmphibian;
+            public string probabilityBug;
+            public string probabilityInvertebrate;
             public string score;
             Random rnd = new Random();
             public Animal()//defaultni konstruktor
                 {
-                hair= 1;
+                hair= 0;
                 feathers = 0;
-                eggs = 0;
-                milk = 1;
+                eggs = 1;
+                milk = 0;
                 airborne = 0;
-                aquatic = 0;
+                aquatic = 1;
                 predator = 1;
-                toothed = 1;
-                backbone = 1;
-                breathes = 1;
+                toothed = 0;
+                backbone = 0;
+                breathes = 0;
                 venomous = 0;
                 fins = 0;
                 tail = 0;
                 domestic = 0;
-                catsize = 1;
+                catsize = 0;
                 legs = 4;
                 }
             public Animal(int Hair,int Feathers, int Eggs,int Milk,int Airborne,int Aquatic,int Predator,int Toothed,int Backbone,int Breathes,int Venomous,int Fins,int Tail,int Domestic,int Catsize, int Legs )//paramatarski konstruktor
@@ -216,20 +216,20 @@ namespace ZOO_Animal_classification
             tempjson = tempjson.Substring(3);
             string jsonString = Reverse(tempjson);
 
-            jsonString = jsonString.Replace("Scored Probabilities for Class \"1\"", "resMammal");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \"2\"", "resBird");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \"3\"", "resReptile");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \"4\"", "resFish");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \"5\"", "resAmphibian");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \"6\"", "resBug");
-            jsonString = jsonString.Replace("Scored Probabilities for Class \"7\"", "resInvertebrate");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"1\\\"", "probabilityMammal");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"2\\\"", "probabilityBird");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"3\\\"", "probabilityReptile");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"4\\\"", "probabilityFish");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"5\\\"", "probabilityAmphibian");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"6\\\"", "probabilityBug");
+            jsonString = jsonString.Replace("Scored Probabilities for Class \\\"7\\\"", "probabilityInvertebrate");
             jsonString = jsonString.Replace("Scored Labels", "score");
             return jsonString;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Animal ziv = new Animal();//kokos
+            Animal ziv = new Animal();//crab
             var client = new RestClient("https://ussouthcentral.services.azureml.net/workspaces/c8f8d54293054df997070fac57ee9366/services/da2db6f9f6d947458210709e2da232bb/execute?api-version=2.0&format=swagger");
             var request = new RestRequest(Method.POST);
             request.AddHeader("Postman-Token", "e8414b95-b5c7-4d92-9fa6-16c0c942414d");
@@ -255,16 +255,16 @@ namespace ZOO_Animal_classification
                 + ziv.GetCatsize() + "\",\r\n}\r\n],\r\n},\r\n\"GlobalParameters\":  {\r\n}\r\n}\r\n", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             string ResponseContentString = response.Content.ToString();
-            string json = CreateJson(ResponseContentString);
-            Animal animal = JsonConvert.DeserializeObject<Animal>(json);
-            richTextBox2.Text = ResponseContentString;
-            textBox17.Text = animal.resMammal.ToString();
-            textBox18.Text = animal.resBird.ToString();
-            textBox19.Text = animal.resReptile.ToString();
-            textBox20.Text = animal.resFish.ToString();
-            textBox21.Text = animal.resAmphibian.ToString();
-            textBox22.Text = animal.resBug.ToString();
-            textBox23.Text = animal.resInvertebrate.ToString();
+            string json = CreateJson(response.Content);
+            var animal = JsonConvert.DeserializeObject<Animal>(json);
+            richTextBox2.Text = json;
+            textBox17.Text = animal.probabilityMammal.ToString();
+            textBox18.Text = animal.probabilityBird.ToString();
+            textBox19.Text = animal.probabilityReptile.ToString();
+            textBox20.Text = animal.probabilityFish.ToString();
+            textBox21.Text = animal.probabilityAmphibian.ToString();
+            textBox22.Text = animal.probabilityBug.ToString();
+            textBox23.Text = animal.probabilityInvertebrate.ToString();
             ReadValues(ziv);
         }
 
@@ -344,14 +344,14 @@ namespace ZOO_Animal_classification
             string ResponseContentString = response.Content.ToString();
             string json = CreateJson(ResponseContentString);
             Animal animal = JsonConvert.DeserializeObject<Animal>(json);
-            richTextBox2.Text = ResponseContentString;
-            textBox17.Text = animal.resMammal.ToString();
-            textBox18.Text = animal.resBird.ToString();
-            textBox19.Text = animal.resReptile.ToString();
-            textBox20.Text = animal.resFish.ToString();
-            textBox21.Text = animal.resAmphibian.ToString();
-            textBox22.Text = animal.resBug.ToString();
-            textBox23.Text = animal.resInvertebrate.ToString();
+            richTextBox2.Text = json;
+            textBox17.Text = animal.probabilityMammal.ToString();
+            textBox18.Text = animal.probabilityBird.ToString();
+            textBox19.Text = animal.probabilityReptile.ToString();
+            textBox20.Text = animal.probabilityFish.ToString();
+            textBox21.Text = animal.probabilityAmphibian.ToString();
+            textBox22.Text = animal.probabilityBug.ToString();
+            textBox23.Text = animal.probabilityInvertebrate.ToString();
             ReadValues(GeneratedAnimal);
         }
 

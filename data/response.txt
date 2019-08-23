@@ -1,0 +1,16 @@
+{
+    "Results": {
+        "output1": [
+            {
+                "Scored Probabilities for Class \"1\"": "0.999921500682831",
+                "Scored Probabilities for Class \"2\"": "3.19390414915688E-06",
+                "Scored Probabilities for Class \"3\"": "0.00644707167521119",
+                "Scored Probabilities for Class \"4\"": "1.89913166082079E-07",
+                "Scored Probabilities for Class \"5\"": "8.13057995401323E-05",
+                "Scored Probabilities for Class \"6\"": "8.10104393167421E-05",
+                "Scored Probabilities for Class \"7\"": "1.26579111775493E-11",
+                "Scored Labels": "1"
+            }
+        ]
+    }
+}
