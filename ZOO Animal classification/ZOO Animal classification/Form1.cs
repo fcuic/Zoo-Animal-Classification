@@ -378,7 +378,7 @@ namespace ZOO_Animal_classification
         private void button4_Click(object sender, EventArgs e)//see existing classes
         {
             Form2 f2 = new Form2();
-            f2.ShowDialog();
+            f2.Show();
         }
         private void Display(Animal animal)
         {
@@ -424,6 +424,11 @@ namespace ZOO_Animal_classification
             Animal animaldeserialized = JsonConvert.DeserializeObject<Animal>(json);
             richTextBox2.Text = json;
             Display(animaldeserialized);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

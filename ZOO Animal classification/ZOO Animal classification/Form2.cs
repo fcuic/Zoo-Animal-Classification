@@ -14,29 +14,13 @@ namespace ZOO_Animal_classification
 {
     public partial class Form2 : Form
     {
+       
         public Form2()
         {
 
             InitializeComponent();
         }
-        public DataTable ReadCsv(string filename)
-        {
-            DataTable dt = new DataTable("Data");
-            using (OleDbConnection cn = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\""+
-                Path.GetDirectoryName(filename) + "\";Extended Properties='text;HDR=yes;FMT=Delimited(,)';"))
-            {
-                using (OleDbCommand cmd = new OleDbCommand(string.Format("select * from [{0}]", new FileInfo(filename).Name), cn))
-                {
-                    cn.Open();
-                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
-                    {
-                        adapter.Fill(dt);
-                    }
-                }
-            }
-                return dt;
-        }
-     
+   
         private void Form2_Load(object sender, EventArgs e)
         {
             
@@ -71,6 +55,11 @@ namespace ZOO_Animal_classification
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
