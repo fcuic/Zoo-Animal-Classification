@@ -69,5 +69,23 @@ namespace ZOO_Animal_classification.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to animal_name,hair,feathers,eggs,milk,airborne,aquatic,predator,toothed,backbone,breathes,venomous,fins,legs,tail,domestic,catsize,class_type
+        ///aardvark,1,0,0,1,0,0,1,1,1,1,0,0,4,0,0,1,1
+        ///antelope,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,1
+        ///bass,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0,4
+        ///bear,1,0,0,1,0,0,1,1,1,1,0,0,4,0,0,1,1
+        ///boar,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1
+        ///buffalo,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,1
+        ///calf,1,0,0,1,0,0,0,1,1,1,0,0,4,1,1,1,1
+        ///carp,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,4
+        ///catfish,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoo {
+            get {
+                return ResourceManager.GetString("zoo", resourceCulture);
+            }
+        }
     }
 }

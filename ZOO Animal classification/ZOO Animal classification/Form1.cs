@@ -13,6 +13,7 @@ using Newtonsoft;
 using Json.Net;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace ZOO_Animal_classification
 {
@@ -226,6 +227,37 @@ namespace ZOO_Animal_classification
             jsonString = jsonString.Replace("Scored Labels", "score");
             return jsonString;
         }
+        public void Enumerate(string score)
+        {
+            if (score == "1")
+            {
+                textBox24.Text = "Mammal";
+            }
+            else if (score == "2")
+            {
+                textBox24.Text = "Bird";
+            }
+            else if (score == "3")
+            {
+                textBox24.Text = "Reptile";
+            }
+            else if (score == "4")
+            {
+                textBox24.Text = "Fish";
+            }
+            else if (score == "5")
+            {
+                textBox24.Text = "Amphibian";
+            }
+            else if (score == "6")
+            {
+                textBox24.Text = "Bug";
+            }
+            else if (score == "7")
+            {
+                textBox24.Text = "Invertebrate";
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -258,13 +290,7 @@ namespace ZOO_Animal_classification
             string json = CreateJson(response.Content);
             var animal = JsonConvert.DeserializeObject<Animal>(json);
             richTextBox2.Text = json;
-            textBox17.Text = animal.probabilityMammal.ToString();
-            textBox18.Text = animal.probabilityBird.ToString();
-            textBox19.Text = animal.probabilityReptile.ToString();
-            textBox20.Text = animal.probabilityFish.ToString();
-            textBox21.Text = animal.probabilityAmphibian.ToString();
-            textBox22.Text = animal.probabilityBug.ToString();
-            textBox23.Text = animal.probabilityInvertebrate.ToString();
+            Display(animal);
             ReadValues(ziv);
         }
 
@@ -345,13 +371,7 @@ namespace ZOO_Animal_classification
             string json = CreateJson(ResponseContentString);
             Animal animal = JsonConvert.DeserializeObject<Animal>(json);
             richTextBox2.Text = json;
-            textBox17.Text = animal.probabilityMammal.ToString();
-            textBox18.Text = animal.probabilityBird.ToString();
-            textBox19.Text = animal.probabilityReptile.ToString();
-            textBox20.Text = animal.probabilityFish.ToString();
-            textBox21.Text = animal.probabilityAmphibian.ToString();
-            textBox22.Text = animal.probabilityBug.ToString();
-            textBox23.Text = animal.probabilityInvertebrate.ToString();
+            Display(animal);
             ReadValues(GeneratedAnimal);
         }
 
@@ -359,6 +379,51 @@ namespace ZOO_Animal_classification
         {
             Form2 f2 = new Form2();
             f2.ShowDialog();
+        }
+        private void Display(Animal animal)
+        {
+            textBox17.Text = animal.probabilityMammal.ToString();
+            textBox18.Text = animal.probabilityBird.ToString();
+            textBox19.Text = animal.probabilityReptile.ToString();
+            textBox20.Text = animal.probabilityFish.ToString();
+            textBox21.Text = animal.probabilityAmphibian.ToString();
+            textBox22.Text = animal.probabilityBug.ToString();
+            textBox23.Text = animal.probabilityInvertebrate.ToString();
+            Enumerate(animal.score);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Animal animal = new Animal(int.Parse(textBox1.Text), int.Parse(textBox2.Text), int.Parse(textBox3.Text), int.Parse(textBox4.Text), int.Parse(textBox16.Text), int.Parse(textBox5.Text), int.Parse(textBox6.Text), int.Parse(textBox7.Text), int.Parse(textBox8.Text), int.Parse(textBox9.Text), int.Parse(textBox10.Text), int.Parse(textBox11.Text), int.Parse(textBox13.Text), int.Parse(textBox14.Text), int.Parse(textBox15.Text), int.Parse(textBox12.Text));
+            var client = new RestClient("https://ussouthcentral.services.azureml.net/workspaces/c8f8d54293054df997070fac57ee9366/services/da2db6f9f6d947458210709e2da232bb/execute?api-version=2.0&format=swagger");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Postman-Token", "e8414b95-b5c7-4d92-9fa6-16c0c942414d");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Authorization", "Bearer YHYI44U79uvZ1iWWKaTJXVmjBIx3tj5XwsTTCKdRStNQIjsVOZdxKNDwTueGALuddwmIbAQXGMHgE9xhZquCDQ==");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("undefined", "{\r\n\"Inputs\": {\r\n\"input1\":\r\n[\r\n{\r\n'hair': \""
+                + animal.GetHair() + "\",   \r\n'feathers': \""
+                + animal.GetFeathers() + "\",\r\n'eggs': \""
+                + animal.GetEggs() + "\",\r\n'milk': \""
+                + animal.GetMilk() + "\",\r\n'airborne': \""
+                + animal.GetAirborne() + "\",\r\n'aquatic': \""
+                + animal.GetAquatic() + "\",\r\n'predator': \""
+                + animal.GetPredator() + "\",\r\n'toothed': \""
+                + animal.GetToothed() + "\",\r\n'backbone': \""
+                + animal.GetBackbone() + "\",\r\n'breathes': \""
+                + animal.GetBreathes() + "\",\r\n'venomous': \""
+                + animal.GetVenomous() + "\",\r\n'fins': \""
+                + animal.GetFins() + "\",\r\n'legs': \""
+                + animal.GetLegs() + "\",\r\n'tail': \""
+                + animal.GetTail() + "\",\r\n'domestic': \""
+                + animal.GetDomestic() + "\",\r\n'catsize': \""
+                + animal.GetCatsize() + "\",\r\n}\r\n],\r\n},\r\n\"GlobalParameters\":  {\r\n}\r\n}\r\n", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            string ResponseContentString = response.Content.ToString();
+            string json = CreateJson(ResponseContentString);
+            Animal animaldeserialized = JsonConvert.DeserializeObject<Animal>(json);
+            richTextBox2.Text = json;
+            Display(animaldeserialized);
         }
     }
 }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +16,61 @@ namespace ZOO_Animal_classification
     {
         public Form2()
         {
+
             InitializeComponent();
         }
-
+        public DataTable ReadCsv(string filename)
+        {
+            DataTable dt = new DataTable("Data");
+            using (OleDbConnection cn = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\""+
+                Path.GetDirectoryName(filename) + "\";Extended Properties='text;HDR=yes;FMT=Delimited(,)';"))
+            {
+                using (OleDbCommand cmd = new OleDbCommand(string.Format("select * from [{0}]", new FileInfo(filename).Name), cn))
+                {
+                    cn.Open();
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+                return dt;
+        }
+     
         private void Form2_Load(object sender, EventArgs e)
         {
-           
+            
+            try
+            {
+                const string RelativePath = "../../Resources/zoo.csv";
+                string[] Lines = File.ReadAllLines(RelativePath);
+                string[] Fields;
+                Fields = Lines[0].Split(new char[] { ',' });
+                int Cols = Fields.GetLength(0);
+                DataTable dt = new DataTable();
+                for (int i = 0; i < Cols; i++)
+                    dt.Columns.Add(Fields[i].ToLower(), typeof(string));
+                DataRow Row;
+                for (int i = 1; i < Lines.GetLength(0); i++)
+                {
+                    Fields = Lines[i].Split(new char[] { ',' });
+                    Row = dt.NewRow();
+                    for (int f = 0; f < Cols; f++)
+                        Row[f] = Fields[f];
+                    dt.Rows.Add(Row);
+                }
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error is " + ex.ToString());
+                throw;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
