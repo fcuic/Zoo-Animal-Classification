@@ -17,7 +17,7 @@ namespace ZOO_Animal_classification
        
         public Form2()
         {
-
+            this.BackgroundImage = Properties.Resources.form2background;
             InitializeComponent();
         }
    

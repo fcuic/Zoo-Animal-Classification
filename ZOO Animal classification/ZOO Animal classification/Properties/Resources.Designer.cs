@@ -63,6 +63,26 @@ namespace ZOO_Animal_classification.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap classification {
+            get {
+                object obj = ResourceManager.GetObject("classification", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap form2background {
+            get {
+                object obj = ResourceManager.GetObject("form2background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pozadina {
             get {
                 object obj = ResourceManager.GetObject("pozadina", resourceCulture);
@@ -72,15 +92,15 @@ namespace ZOO_Animal_classification.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to animal_name,hair,feathers,eggs,milk,airborne,aquatic,predator,toothed,backbone,breathes,venomous,fins,legs,tail,domestic,catsize,class_type
-        ///aardvark,1,0,0,1,0,0,1,1,1,1,0,0,4,0,0,1,1
-        ///antelope,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,1
-        ///bass,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0,4
-        ///bear,1,0,0,1,0,0,1,1,1,1,0,0,4,0,0,1,1
-        ///boar,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,1
-        ///buffalo,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,1
-        ///calf,1,0,0,1,0,0,0,1,1,1,0,0,4,1,1,1,1
-        ///carp,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,4
-        ///catfish,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0, [rest of string was truncated]&quot;;.
+        ///aardvark,1,0,0,1,0,0,1,1,1,1,0,0,4,0,0,1,mammal
+        ///antelope,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,mammal
+        ///bass,0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0,fish
+        ///bear,1,0,0,1,0,0,1,1,1,1,0,0,4,0,0,1,mammal
+        ///boar,1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1,mammal
+        ///buffalo,1,0,0,1,0,0,0,1,1,1,0,0,4,1,0,1,mammal
+        ///calf,1,0,0,1,0,0,0,1,1,1,0,0,4,1,1,1,mammal
+        ///carp,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,fish
+        ///catf [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string zoo {
             get {

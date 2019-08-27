@@ -394,6 +394,27 @@ namespace ZOO_Animal_classification
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if ((int.Parse(textBox1.Text) != 0 && int.Parse(textBox1.Text) != 1) || (int.Parse(textBox2.Text) != 0 && int.Parse(textBox2.Text) != 1) || (int.Parse(textBox3.Text) != 0 && int.Parse(textBox3.Text) != 1) || (int.Parse(textBox4.Text) != 0 && int.Parse(textBox4.Text) != 1) || (int.Parse(textBox16.Text) != 0 && int.Parse(textBox16.Text) != 1) || (int.Parse(textBox5.Text) != 0 && int.Parse(textBox5.Text) != 1) || (int.Parse(textBox6.Text) != 0 && int.Parse(textBox6.Text) != 1) || (int.Parse(textBox7.Text) != 0 && int.Parse(textBox7.Text) != 1) || (int.Parse(textBox8.Text) != 0 && int.Parse(textBox8.Text) != 1) || (int.Parse(textBox9.Text) != 0 && int.Parse(textBox9.Text) != 1) || (int.Parse(textBox10.Text) != 0 && int.Parse(textBox10.Text) != 1) || (int.Parse(textBox11.Text) != 0 && int.Parse(textBox11.Text) != 1) || (int.Parse(textBox13.Text) != 0 && int.Parse(textBox13.Text) != 1) || (int.Parse(textBox14.Text) != 0 && int.Parse(textBox14.Text) != 1) || (int.Parse(textBox15.Text) != 0 && int.Parse(textBox15.Text) != 1) || (int.Parse(textBox12.Text)!=0 && int.Parse(textBox12.Text) != 2 && int.Parse(textBox12.Text) != 4 && int.Parse(textBox12.Text) != 8))
+            {
+                MessageBox.Show("Invalid input, all features are allowed be 0 or 1, and legs are allowed to be 0, 2, 4 or 8. Please check your input and click 'Check Probabilities' button again, or see the instructions by clicking 'How to Use' button.");
+                textBox1.Text = "0";
+                textBox2.Text = "0";
+                textBox3.Text = "1";
+                textBox4.Text = "0";
+                textBox16.Text = "0";
+                textBox5.Text = "0";
+                textBox6.Text = "1";
+                textBox7.Text = "1";
+                textBox8.Text = "0";
+                textBox9.Text = "0";
+                textBox10.Text = "0";
+                textBox11.Text = "0";
+                textBox12.Text = "4";
+                textBox13.Text = "0";
+                textBox14.Text = "0";
+                textBox15.Text = "0";
+            }
+            else { 
             Animal animal = new Animal(int.Parse(textBox1.Text), int.Parse(textBox2.Text), int.Parse(textBox3.Text), int.Parse(textBox4.Text), int.Parse(textBox16.Text), int.Parse(textBox5.Text), int.Parse(textBox6.Text), int.Parse(textBox7.Text), int.Parse(textBox8.Text), int.Parse(textBox9.Text), int.Parse(textBox10.Text), int.Parse(textBox11.Text), int.Parse(textBox13.Text), int.Parse(textBox14.Text), int.Parse(textBox15.Text), int.Parse(textBox12.Text));
             var client = new RestClient("https://ussouthcentral.services.azureml.net/workspaces/c8f8d54293054df997070fac57ee9366/services/da2db6f9f6d947458210709e2da232bb/execute?api-version=2.0&format=swagger");
             var request = new RestRequest(Method.POST);
@@ -424,11 +445,18 @@ namespace ZOO_Animal_classification
             Animal animaldeserialized = JsonConvert.DeserializeObject<Animal>(json);
             richTextBox2.Text = json;
             Display(animaldeserialized);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            Form3 f3 = new Form3();
+            f3.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
