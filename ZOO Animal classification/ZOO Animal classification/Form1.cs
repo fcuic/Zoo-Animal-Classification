@@ -456,7 +456,8 @@ namespace ZOO_Animal_classification
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            AboutBox1 about = new AboutBox1();
+            about.Show();
         }
     }
 }

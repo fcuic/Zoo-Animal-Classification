@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ZOO Animal classification")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Frontend Application for user input and testing REST API deployed with Microsoft Azure. REST API Classifies inputed animal using Multiclass neural network. Neural network is trained and tested on zoo.csv dataset which is provided by Kaggle.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("FERIT, RUAP project")]
 [assembly: AssemblyProduct("ZOO Animal classification")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
