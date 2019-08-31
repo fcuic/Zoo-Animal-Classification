@@ -260,38 +260,23 @@ namespace ZOO_Animal_classification
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            Animal ziv = new Animal();//crab
-            var client = new RestClient("https://ussouthcentral.services.azureml.net/workspaces/c8f8d54293054df997070fac57ee9366/services/da2db6f9f6d947458210709e2da232bb/execute?api-version=2.0&format=swagger");
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Postman-Token", "e8414b95-b5c7-4d92-9fa6-16c0c942414d");
-            request.AddHeader("cache-control", "no-cache");
-            request.AddHeader("Authorization", "Bearer YHYI44U79uvZ1iWWKaTJXVmjBIx3tj5XwsTTCKdRStNQIjsVOZdxKNDwTueGALuddwmIbAQXGMHgE9xhZquCDQ==");
-            request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("undefined", "{\r\n\"Inputs\": {\r\n\"input1\":\r\n[\r\n{\r\n'hair': \""
-                + ziv.GetHair() + "\",   \r\n'feathers': \""
-                + ziv.GetFeathers() + "\",\r\n'eggs': \""
-                + ziv.GetEggs() + "\",\r\n'milk': \""
-                + ziv.GetMilk() + "\",\r\n'airborne': \""
-                + ziv.GetAirborne() + "\",\r\n'aquatic': \""
-                + ziv.GetAquatic() + "\",\r\n'predator': \""
-                + ziv.GetPredator() + "\",\r\n'toothed': \""
-                + ziv.GetToothed() + "\",\r\n'backbone': \""
-                + ziv.GetBackbone() + "\",\r\n'breathes': \""
-                + ziv.GetBreathes() + "\",\r\n'venomous': \""
-                + ziv.GetVenomous() + "\",\r\n'fins': \""
-                + ziv.GetFins() + "\",\r\n'legs': \""
-                + ziv.GetLegs() + "\",\r\n'tail': \""
-                + ziv.GetTail() + "\",\r\n'domestic': \""
-                + ziv.GetDomestic() + "\",\r\n'catsize': \""
-                + ziv.GetCatsize() + "\",\r\n}\r\n],\r\n},\r\n\"GlobalParameters\":  {\r\n}\r\n}\r\n", ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-            string ResponseContentString = response.Content.ToString();
-            string json = CreateJson(response.Content);
-            var animal = JsonConvert.DeserializeObject<Animal>(json);
-            richTextBox2.Text = json;
-            Display(animal);
-            ReadValues(ziv);
+        { 
+            textBox1.Text = "0";
+            textBox2.Text = "0";
+            textBox3.Text = "0";
+            textBox4.Text = "0";
+            textBox16.Text = "0";
+            textBox5.Text = "0";
+            textBox6.Text = "0";
+            textBox7.Text = "0";
+            textBox8.Text = "0";
+            textBox9.Text = "0";
+            textBox10.Text = "0";
+            textBox11.Text = "0";
+            textBox12.Text = "0";
+            textBox13.Text = "0";
+            textBox14.Text = "0";
+            textBox15.Text = "0";
         }
 
         public Animal GenerateAnimal() {
@@ -399,17 +384,17 @@ namespace ZOO_Animal_classification
                 MessageBox.Show("Invalid input, all features are allowed be 0 or 1, and legs are allowed to be 0, 2, 4 or 8. Please check your input and click 'Check Probabilities' button again, or see the instructions by clicking 'How to Use' button.");
                 textBox1.Text = "0";
                 textBox2.Text = "0";
-                textBox3.Text = "1";
+                textBox3.Text = "0";
                 textBox4.Text = "0";
                 textBox16.Text = "0";
                 textBox5.Text = "0";
-                textBox6.Text = "1";
-                textBox7.Text = "1";
+                textBox6.Text = "0";
+                textBox7.Text = "0";
                 textBox8.Text = "0";
                 textBox9.Text = "0";
                 textBox10.Text = "0";
                 textBox11.Text = "0";
-                textBox12.Text = "4";
+                textBox12.Text = "0";
                 textBox13.Text = "0";
                 textBox14.Text = "0";
                 textBox15.Text = "0";
